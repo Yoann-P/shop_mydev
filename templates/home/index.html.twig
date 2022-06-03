@@ -1,0 +1,204 @@
+{% extends 'base.html.twig' %}
+{% block slider %}{% endblock %}
+{% block products %}
+
+	<!-- START PORTOLIO SECTION -->
+	<div class="portfolio-section">
+		<div class="container">
+			<div
+				class="row">
+
+				<!-- START PORTFOLIO HEADING -->
+				<div class="col-12">
+					<div class="portfolioHeading text-center">
+						<h1 class="high-lighted-heading">Our Luxurious Product</h1>
+						<p>Aenean imperdiet. Etiam ultricies nisi vel augue men tuhi spectrum alle me.</p>
+					</div>
+				</div>
+				<!-- END PORTFOLIO HEADING -->
+
+				<!-- START FILTERS -->
+				<div class="col-12">
+					<div class="clearfix d-flex justify-content-center">
+						<div id="js-filters-blog-posts" class="cbp-l-filters-button cbp-1-filters-alignCenter">
+							<div data-filter="*" class="cbp-filter-item-active cbp-filter-item cbp-l-filters-list-first">Toutes
+							</div>
+							<div data-filter=".Homme" class="cbp-filter-item ">Homme
+							</div>
+							<div data-filter=".Femme" class="cbp-filter-item cbp-l-filters-list-last">Femme
+							</div>
+							{# <div  class="montres-homme cbp-filter-item">Homme #}
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- END FILTERS -->
+			<div
+				class="row justify-content-center">
+				<!-- START PORTFOLIO IMAGES -->
+				<div class="col-12 text-center">
+					<div id="js-grid-blog-posts" class="cbp ">
+						{% for product in products %}
+							{% include 'product/single_product.html.twig' %}
+						{% endfor %}
+						{# <div class="cbp-item CausalShirts others wow slideInUp">
+																														<a class="portfolio-circle-cart" href="shop/shop-cart.html">
+																															<i class="fa fa-shopping-cart"></i>
+																														</a>
+																														<div class="cbp-caption-defaultWrap  owl-theme sync-portfolio-carousel owl-carousel">
+																															<div class="item">
+																																<a href="shop/img/product-listing/p24.jpg" class="cbp-caption" data-fancybox="gallery1" data-title="Shirt Name"><img src="shop/img/product-listing/p24.jpg" alt=""></a>
+																															</div>
+																															<div class="item">
+																																<a href="shop/img/product-listing/p25.jpg" class="cbp-caption" data-fancybox="gallery1" data-title="Shirt Name"><img src="shop/img/product-listing/p25.jpg" alt=""></a>
+																															</div>
+																														</div>
+																														<div class="row">
+																															<div class="col-12 text-center">
+																																<a href="shop/product-detail.html" target="_blank" class="cbp-l-grid-blog-title portfolio-title">Light Wear
+																																</a>
+																															</div>
+																															<div class="col-12 text-center">
+																																<div class="cbp-l-grid-blog-desc portfolio-des">$999.00</div>
+																															</div>
+																														</div>
+																													</div>
+																							
+																													<div class="cbp-item formalShirts CausalShirts wow slideInUp">
+																														<a class="portfolio-circle-cart" href="shop/shop-cart.html">
+																															<i class="fa fa-shopping-cart"></i>
+																														</a>
+																														<div class="cbp-caption-defaultWrap  owl-theme sync-portfolio-carousel owl-carousel">
+																															<div class="item">
+																																<a href="shop/img/product-listing/p26.jpg" class="cbp-caption" data-fancybox="gallery2" data-title="Shirt Name">
+																																	<img src="shop/img/product-listing/p26.jpg" alt=""></a>
+																															</div>
+																															<div class="item">
+																																<a href="shop/img/product-listing/p27.jpg" class="cbp-caption" data-fancybox="gallery2" data-title="Shirt Name"><img src="shop/img/product-listing/p27.jpg" alt=""></a>
+																															</div>
+																														</div>
+																							
+																														<div class="row">
+																															<div class="col-12 text-center">
+																																<a href="shop/product-detail.html" target="_blank" class="cbp-l-grid-blog-title portfolio-title">Light Wear
+																																</a>
+																															</div>
+																															<div class="col-12 text-center">
+																																<div class="cbp-l-grid-blog-desc portfolio-des">$999.00</div>
+																															</div>
+																														</div>
+																													</div>
+																							
+																													<div class="cbp-item CausalShirts others wow slideInUp">
+																														<a class="portfolio-circle-cart" href="shop/shop-cart.html">
+																															<i class="fa fa-shopping-cart"></i>
+																														</a>
+																														<div class="cbp-caption-defaultWrap  owl-theme sync-portfolio-carousel owl-carousel">
+																															<div class="item">
+																																<a href="shop/img/product-listing/p30.jpg" class="cbp-caption" data-fancybox="gallery3" data-title="Shirt Name">
+																																	<img src="shop/img/product-listing/p30.jpg" alt=""></a>
+																															</div>
+																															<div class="item">
+																																<a href="shop/img/product-listing/p31.jpg" class="cbp-caption" data-fancybox="gallery3" data-title="Shirt Name"><img src="shop/img/product-listing/p31.jpg" alt=""></a>
+																															</div>
+																														</div>
+																							
+																														<div class="row">
+																															<div class="col-12 text-center">
+																																<a href="shop/product-detail.html" target="_blank" class="cbp-l-grid-blog-title portfolio-title">Light Wear
+																																</a>
+																															</div>
+																															<div class="col-12 text-center">
+																																<div class="cbp-l-grid-blog-desc portfolio-des">$999.00</div>
+																															</div>
+																														</div>
+																													</div>
+																							
+																													<div class="cbp-item formalShirts CausalShirts wow slideInUp">
+																							
+																														<a class="portfolio-circle-cart" href="shop/shop-cart.html">
+																															<i class="fa fa-shopping-cart"></i>
+																														</a>
+																							
+																														<div class="cbp-caption-defaultWrap  owl-theme sync-portfolio-carousel owl-carousel">
+																															<div class="item">
+																																<a href="shop/img/product-listing/p28.jpg" class="cbp-caption" data-fancybox="gallery4" data-title="Shirt Name">
+																																	<img src="shop/img/product-listing/p28.jpg" alt=""></a>
+																															</div>
+																															<div class="item">
+																																<a href="shop/img/product-listing/p29.jpg" class="cbp-caption" data-fancybox="gallery4" data-title="Shirt Name"><img src="shop/img/product-listing/p29.jpg" alt=""></a>
+																															</div>
+																														</div>
+																							
+																														<div class="row">
+																															<div class="col-12 text-center">
+																																<a href="shop/product-detail.html" target="_blank" class="cbp-l-grid-blog-title portfolio-title">Long Frock</a>
+																															</div>
+																															<div class="col-12 text-center">
+																																<div class="cbp-l-grid-blog-desc portfolio-des">$999.00</div>
+																															</div>
+																														</div>
+																													</div>
+																							
+																													<div class="cbp-item motion CausalShirts wow slideInUp">
+																														<a class="portfolio-circle-cart" href="shop/shop-cart.html">
+																															<i class="fa fa-shopping-cart"></i>
+																														</a>
+																							
+																														<div class="cbp-caption-defaultWrap  owl-theme sync-portfolio-carousel owl-carousel">
+																															<div class="item">
+																																<a href="shop/img/product-listing/p34.jpg" class="cbp-caption" data-fancybox="gallery5" data-title="Shirt Name">
+																																	<img src="shop/img/product-listing/p34.jpg" alt=""></a>
+																															</div>
+																															<div class="item">
+																																<a href="shop/img/product-listing/p35.jpg" class="cbp-caption" data-fancybox="gallery5" data-title="Shirt Name"><img src="shop/img/product-listing/p35.jpg" alt=""></a>
+																															</div>
+																														</div>
+																							
+																														<div class="row">
+																															<div class="col-12 text-center">
+																																<a href="shop/product-detail.html" target="_blank" class="cbp-l-grid-blog-title portfolio-title">Casual Wear
+																																</a>
+																															</div>
+																															<div class="col-12 text-center">
+																																<div class="cbp-l-grid-blog-desc portfolio-des">$999.00</div>
+																															</div>
+																														</div>
+																							
+																													</div>
+																							
+																													<div class="cbp-item formalShirts CausalShirts wow slideInUp">
+																														<a class="portfolio-circle-cart" href="shop/shop-cart.html">
+																															<i class="fa fa-shopping-cart"></i>
+																														</a>
+																							
+																														<div class="cbp-caption-defaultWrap  owl-theme sync-portfolio-carousel owl-carousel">
+																															<div class="item">
+																																<a href="shop/img/product-listing/p32.jpg" class="cbp-caption" data-fancybox="gallery6" data-title="Shirt Name">
+																																	<img src="shop/img/product-listing/p32.jpg" alt=""></a>
+																															</div>
+																															<div class="item">
+																																<a href="shop/img/product-listing/p33.jpg" class="cbp-caption" data-fancybox="gallery6" data-title="Shirt Name"><img src="shop/img/product-listing/p33.jpg" alt=""></a>
+																															</div>
+																														</div>
+																							
+																														<div class="row">
+																															<div class="col-12 text-center">
+																																<a href="shop/product-detail.html" target="_blank" class="cbp-l-grid-blog-title portfolio-title">Casual Wear
+																																</a>
+																															</div>
+																															<div class="col-12 text-center">
+																																<div class="cbp-l-grid-blog-desc portfolio-des">$999.00</div>
+																															</div>
+																														</div>
+																							
+																													</div> #}
+
+					</div>
+				</div>
+			</div>
+			<!-- END PORTFOLIO IMAGES -->
+
+		</div>
+	</div>
+</div>{% endblock %}{% block banner %}{% endblock %}{% block latest %}{% endblock %}

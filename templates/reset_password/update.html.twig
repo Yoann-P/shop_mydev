@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mot de passe oublié
+{% endblock %}
+
+{% block content %}
+
+	<div class="row no-gutters">
+		<div class="col-lg-3"></div>
+		<div class="col-lg-6 col-md-12 col-sm-12 pr-lg-0 whitebox wow slideInLeft" style="visibility: visible; animation-name: slideInLeft;">
+			<div class="widget logincontainer register-account">
+
+				<h1 class="h3 mb-3 font-weight-normal">Réinitialiser mon mot de passe</h1>
+
+				{% for message in app.flashes('notice') %}
+					<div class="alert alert-info">{{ message }}</div>
+				{% endfor %}
+				{% for message in app.flashes('notice') %}
+					<div class="alert alert-info">{{ message }}</div>
+				{% endfor %}
+				{{ form(form) }}
+
+				</div>
+			</div>
+			<div class="col-lg-3"></div>
+
+
+		</div>
+
+
+	{% endblock %}

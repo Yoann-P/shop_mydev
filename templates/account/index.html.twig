@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}mon compte
+{% endblock %}
+{% set banner_bis = banner_bis | default({}) | merge({
+    "title"       : "Mon compte",
+    "desc"       : "",
+}) %}
+{% block banner_bis  %}{% endblock %}
+{% block content %}
+	<div class="container">
+		<div class="row no-gutters">
+			<div class="col-lg-6 col-md-12 col-sm-12 pr-lg-0 whitebox wow slideInLeft animated" style="visibility: visible; animation-name: slideInLeft;">
+				<div class="widget logincontainer register-account">
+					<h3 class="bottom35 text-center text-md-left">Bienvenue
+						{{app.user.pseudo}}</h3>
+
+				</div>
+			</div>
+			<div class="col-lg-6 col-md-12 col-sm-12 registeration-detail wow slideInRight animated" data-wow-delay=".9s" style="visibility: visible; animation-delay: 0.9s; animation-name: slideInRight;">
+				<div class="heading-area pl-lg-4 p-0">
+					<h6 class="sub-title text-left">Gestion de compte</h6>
+
+
+					<ul class="about-list">
+
+
+						<li>
+							<a href="{{ path('account_password') }}" class="btn pink-gradient-btn-into-black w-100">
+								Modifier mon mot de passe</a>
+						</li>
+						<li>
+							<a href="{{ path('account_adress') }}" class="btn pink-gradient-btn-into-black w-100">
+								Gérer mes adresses</a>
+						</li>
+						<li>
+							<a href="{{ path('account_order') }}" class="btn pink-gradient-btn-into-black w-100">
+								Gérer mes commandes</a>
+						</li>
+						{% if is_granted('ROLE_ADMIN') %}
+							<li>
+								<a href="/admin" class="btn pink-gradient-btn-into-black w-100">Vous êtes un administrateur, accéder au backoffice ?</a>
+							</li>
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

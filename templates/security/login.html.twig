@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion
+{% endblock %}
+{% set banner_bis = banner_bis | default({}) | merge({
+    "title"       : "Connexion",
+    "desc"       : "Connectez-vous à votre compte shop.mydev.fr démo",
+}) %}
+{% block banner_bis  %}{% endblock %}
+{% block content %}
+	{% if error %}
+		<div class="alert alert-danger text-center m0">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+	{% endif %}
+
+	{% for message in app.flashes('notice') %}
+		<div class="alert alert-info text-center m0">{{ message }}</div>
+	{% endfor %}
+
+	{% if app.user %}
+		<div class="mb-3">
+			Vous êtes connecté
+			{{ app.user.username }},
+			<a href="{{ path('app_logout') }}">Logout</a>
+		</div>
+	{% endif %}
+
+	<!-- START MAIN CONTENT  -->
+	<div
+		class="signup-form">
+
+		<!--  START MANAGE CONTEND  -->
+		<div class="about_content">
+
+			<div class="container">
+				<div class="row">
+					<div class="col-12  col-lg-8 offset-lg-2 text-center wow slideInUp" data-wow-duration="2s"></div>
+				</div>
+			</div>
+
+			<!--  START FORM SECTION  -->
+			<div class="offset-lg-3 col-lg-6 col-md-12 col-sm-12 pr-lg-0 whitebox">
+				<div
+					class="widget logincontainer">
+					<!--            <h3 class="bottom35 text-center text-md-left">Log In to Your Account </h3>-->
+					<form class="getin_form border-form" id="register" method="post">
+						<div class="row">
+
+							<div class="col-md-12 col-sm-12">
+								<div class="form-group bottom35">
+									<label for="inputEmail">Adresse E-mail</label>
+									<input
+									value="{{ last_username }}" name="email" id="inputEmail" type="email" class="form-control" placeholder="Entrez votre adresse E-mail" required autofocus/>
+
+								{# <input class="form-control" type="email" placeholder="Email:" required="" id="registerEmail"> #}
+								</div>
+							</div>
+							<div class="col-md-12 col-sm-12">
+								<div class="form-group bottom35">
+									<label for="inputPassword">Mot de passe</label>
+									<input
+									name="password" id="inputPassword" type="password" class="form-control" placeholder="Entrez votre mot de passe" required/>
+
+								{# <input class="form-control" type="password" placeholder="Password:" required="" id="registerPass"> #}
+								</div>
+							</div>
+
+							<div class="col-sm-12">
+								<button type="submit" class="btn pink-gradient-btn-into-black">Connexion</button><br/>
+								<a href="{{ path('reset_password') }}">
+									<small>Mot de passe oublié</small>
+								</a><br/>
+								<p class="top20 SignInclass">
+									Pas encore inscrit ? &nbsp;<a href="{{ path('register') }}">Créez un compte</a>
+
+								</p>
+							</div>
+						</div>
+						<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+					</form>
+				</div>
+			</div>
+			<!--  END FORM SECTION  -->
+
+
+		</div>
+		<!--  END MANAGE CONTEND  -->
+
+	</div>
+	<!-- END MAIN CONTENT  -->
+
+{% endblock %}

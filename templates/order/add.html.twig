@@ -1,0 +1,178 @@
+{% extends 'base.html.twig' %}
+{% block javascript %}
+	<script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+
+	<script src="https://js.stripe.com/v3/"></script>
+
+{% endblock %}
+{% set banner_bis = banner_bis | default({}) | merge({
+    "title"       : "Récapitulatif de la commande",
+    "desc"       : "En validant la commande, des numéros de CB fictifs vont être affichés.",
+}) %}
+{% block banner_bis  %}{% endblock %}
+
+{% block content %}
+	<div class="shop-cart wow slideInUp" data-wow-duration="2s">
+		<div
+			class="container mb-5">
+			<!-- START SHOP CART CHECKOUT FORM -->
+			<div class="row pt-5">
+				<div class="col-12 col-lg-6 wow slideInRight" data-wow-duration="2s">
+					<div class="card-total">
+						<table>
+							<tr>
+								<td>
+									<h6>
+										<b>Adresse de livraison</b>
+									</h6>
+									{{ delivery|raw }}
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h6>
+										<b>Votre transporteur</b>
+									</h6>
+									{{ carrier.name }}<br/>
+									{{ carrier.description }}<br/>
+									{{ (carrier.price / 100)|number_format(2, ',', '.') }}
+								</td>
+
+
+							</tr>
+
+						</table>
+					</div>
+				</div>
+				<div class="col-12 col-lg-6 wow slideInLeft" data-wow-duration="2s">
+					<div class="calculate-shipping">
+						<div class="col-12 col-md-12  cart_table wow fadeInUp animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
+							<div class="table-responsive">
+								<table class="table table-bordered border-radius">
+									{% set total = null %}
+									<tbody>
+										{% for key,product in cart %}
+
+											<tr>
+												<td>
+													<div class="d-table product-detail-cart">
+
+														<div class="media">
+															<div class="row no-gutters">
+
+																<div class="col-12 col-lg-5 product-detail-cart-image">
+																	<a class="shopping-product" href="#"><img class="rounded" src="/uploads/{{ product.product.illustration }}" alt="{{ product.product.name }}"></a>
+
+																</div>
+
+
+															</div>
+														</div>
+													</div>
+
+												</td>
+												<td>
+													{{ product.product.name }}<br/>
+													<small>{{ (product.product.price /100)|number_format(2,',','.')}}
+														€</small>
+												</td>
+												<td class="text-center">
+													{{ product.quantity }}
+												</td>
+
+
+											</tr>
+											{% set total = total + (product.product.price * product.quantity) %}
+
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+
+							<div class="apply_coupon">
+								<div class="row">
+									<div class="col-12 text-right">
+										<p>
+											<b>Sous total :</b>
+											{{ (total / 100)|number_format(2, ',', '.') }}
+											€</p>
+										<p>
+											<b>Livraison :</b>
+											{{ (carrier.price / 100)|number_format(2, ',', '.') }}
+											€</p>
+										<p>
+											<b>Total de votre commande :</b>
+											{{ ((total / 100) + (carrier.price / 100 ))|number_format(2, ',', '.') }}
+											€</p>
+										<!-- Button trigger modal -->
+										<button type="button" class="btn pink-gradient-btn-into-black" data-toggle="modal" data-target="#payer">
+											Payer |
+											{{ ((total / 100) + carrier.price / 100) | number_format(2, ',', '.') }}
+											€
+
+										</button>
+
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- END SHOP CART CHECKOUT FORM -->
+		</div>
+	</div>
+
+
+	<!-- Modal -->
+	<div class="modal fade" id="payer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Pour essayer un scénario, entrez l'un des numéro de CB de test suivant</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<ul>
+						<li>
+							<b>Paiement validé
+							</b>
+							4242 4242 4242 4242</li>
+
+						<li>
+							<b>Paiement par authentification
+							</b>
+							4000 0025 0000 3155</li>
+						<li>
+							<b>Paiement refusé
+							</b>4000 0000 0000 9995
+						</li>
+						<li>
+							<b>Date</b>
+							{{ "now"|date_modify("+1 month")|date("m/Y") }}
+						</li>
+						<li>
+							<b>Cryptogramme
+							</b>
+							123
+						</li>
+					</ul>
+
+
+				</div>
+				<div class="modal-footer">
+					<a href="{{ path('stripe_create_session', {'reference': reference })}}" class="btn pink-gradient-btn-into-black">Payer |
+						{{ ((total / 100) + carrier.price / 100) | number_format(2, ',', '.') }}
+						€
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

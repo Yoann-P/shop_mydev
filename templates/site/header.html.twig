@@ -1,0 +1,424 @@
+<!-- START HEADER NAVIGATION -->
+<div class="header-area">
+	<div class="container">
+		<div class="row upper-nav">
+
+			<div class="col-12 col-lg-3 nav-icon pt-3">
+				<ul class="social-icons-simple text-left">
+					<li>
+						<a href="https://mydev.fr/#equipe" target="_blanck" class="facebook-bg-hvr">
+							<i class="fab fa-linkedin" style="font-size:1.7rem;" aria-hidden="true"></i>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0)" class="facebook-bg-hvr">
+							<i class="fab fa-github-square" style="font-size:1.7rem;" aria-hidden="true"></i>
+						</a>
+					</li>
+					<li></li>
+				</ul>
+			</div>
+			<div class="col-6 text-center nav-logo pt-3" id="logo">
+				<a href="{{ path('home') }}" class="navbar-brand" style="font-size:2rem">my<span class="bold">Dev</span>
+					<span class="h6">.shop</small>
+					Demo
+				</a>
+				{# {{ asset('assets/img/logos/Logo.png')}} #}
+			</div>
+
+			<div class="col-3 nav-utility text-right d-flex justify-content-end align-items-center pt-3">
+				<div class="manage-icons d-inline-block">
+					<ul>
+						<li class="d-inline-block">
+							<a id="add_search_box" href="{{ path('products') }}">
+								<i class="fas fa-search search-sidebar-hover"></i>
+							</a>
+						</li>
+						<li class="d-inline-block mini-menu-card" id="mini-menu-card">
+							<a class="nav-link " href="{{ path('cart') }}">
+								<i class="fas fa-shopping-cart"></i>
+							</a>
+						</li>
+						<li class="d-inline-block simple-dropdown" id="mini-menu">
+							<a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages5">
+								<i class="fas fa-th"></i>
+							</a>
+
+							<div id="sideNavPages5" class="collapse sideNavPages user-utiliity">
+
+								{% if app.user %}
+
+									<ul class="text-left">
+										<li>
+											<small>Bonjour
+												{{ app.user.pseudo }}</small>
+										</li>
+										<hr>
+										<li>
+											<a href="{{ path('account') }}">
+												<i class="fas fa-user-circle"></i>
+												Mon compte</a>
+										</li>
+										<li>
+											<a href="{{ path('app_logout') }}">
+												<i class=" fas fa-sign-out-alt"></i>
+												<span class="text-end">Déconnexion</span>
+											</a>
+										</li>
+
+									</ul>
+								{% else %}
+									<ul class="text-left">
+										<li>
+											<a href="{{ path('register') }}">Register</a>
+										</li>
+										<li>
+											<a href="{{ path('app_login') }}">Login</a>
+										</li>
+									</ul>
+
+								{% endif %}
+
+							</div>
+
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-12 nav-mega">
+				<header class="site-header" id="header">
+					<nav class="navbar navbar-expand-md  static-nav">
+						<div class="container position-relative megamenu-custom">
+
+							<div class="collapse navbar-collapse">
+								<ul class="navbar-nav ml-auto mr-auto">
+									<li class="nav-item">
+										<a class="nav-link" href="{{ path('home') }}">ACCUEIL</a>
+									</li>
+									<li class="nav-item dropdown static">
+										<a class="nav-link dropdown-toggle active" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											MONTRES
+										</a>
+										<ul class="dropdown-menu megamenu flexable-megamenu">
+											<li>
+												<div class="container">
+													<div class="row">
+														<div class="col-lg-3 col-md-6 col-sm-12 mengmenu_border">
+															<h5 class="dropdown-title">
+																Homme
+															</h5>
+															<ul>
+																<li>
+																	<i class="lni-angle-double-right right-arrow"></i>
+																	<a class="dropdown-item" href="../../produit/classic">Classic</a>
+																</li>
+																<li>
+																	<i class="lni-angle-double-right right-arrow"></i>
+																	<a class="dropdown-item" href="../../produit/elegance">Elegance</a>
+																</li>
+																<li>
+																	<i class="lni-angle-double-right right-arrow"></i>
+																	<a class="dropdown-item" href="../../produit/cuir">Cuir</a>
+																</li>
+																<li>
+																	<i class="lni-angle-double-right right-arrow"></i>
+																	<a class="dropdown-item" href="../../produit/o-choix">Ô'choix</a>
+																</li>
+																<li>
+																	<i class="lni-angle-double-right right-arrow"></i>
+																	<a class="dropdown-item" href="../../produit/metal">Metal</a>
+																</li>
+																<li>
+																	<i class="lni-angle-double-right right-arrow"></i>
+																	<a class="dropdown-item" href="../../produit/gold">Gold</a>
+																</li>
+															</ul>
+
+															{# {% for productSingle in productsTotal %}
+																																																																																																																																																																																																																																																																																																																																																																																																																																						{% if productSingle.category.name == "Montres Homme" %}
+																																																																																																																																																																																																																																																																																																																																																																																																																																						<li>
+																																																																																																																																																																																																																																																																																																																																																																																																																																							<i class="lni-angle-double-right right-arrow"></i>
+																																																																																																																																																																																																																																																																																																																																																																																																																																							<a class="dropdown-item" href="produit/{{ productSingle.slug }}">{{ productSingle.name }}</a>
+																																																																																																																																																																																																																																																																																																																																																																																																																																						</li>
+																																																																																																																																																																																																																																																																																																																																																																																																																																						{% endif %}
+																																																																																																																																																																																																																																																																																																																																																																																																																																					{% endfor %} #}
+
+
+														</div>
+														<div class="col-lg-3 col-md-6 col-sm-12 mengmenu_border">
+															<h5 class="dropdown-title">
+																Femme
+															</h5>
+															<ul>
+																<li>
+																	<i class="lni-angle-double-right right-arrow"></i>
+																	<a class="dropdown-item" href="../../produit/gold-w">Gold-W</a>
+																</li>
+																<li>
+																	<i class="lni-angle-double-right right-arrow"></i>
+																	<a class="dropdown-item" href="../../produit/rose-w">Rose-W</a>
+																</li>
+																<li>
+																	<i class="lni-angle-double-right right-arrow"></i>
+																	<a class="dropdown-item" href="../../produit/black-w">Black-W</a>
+																</li>
+
+															</ul>
+
+
+														</div>
+
+														<div class="col-lg-6 col-md-12 col-sm-12">
+															<h5 class="dropdown-title text-left">Collections à venir
+															</h5>
+															<div class="carousel-menu mt-4">
+																<div class="featured-megamenu-carousel owl-carousel owl-theme">
+																	<div class="item ">
+																		<img src="{{asset('img/shop1.jpg')}}" alt="shop-image">
+																	</div>
+																	<div class="item">
+																		<img src="{{asset('img/shop2.jpg')}}" alt="shop-image">
+																	</div>
+																</div>
+																<i class="lni-chevron-left ini-customPrevBtn"></i>
+																<i class="lni-chevron-right ini-customNextBtn"></i>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</li>
+
+
+									<li class="nav-item">
+										<a class="nav-link" href="https://mydev.fr/#contact" target="_blank">CONTACT</a>
+									</li>
+
+								</ul>
+							</div>
+						</div>
+						<!--side menu open button-->
+						<a href="javascript:void(0)" class="d-inline-block sidemenu_btn d-lg-none d-md-block" id="sidemenu_toggle">
+							<span></span>
+							<span></span>
+							<span></span>
+						</a>
+					</nav>
+
+
+					<!-- side menu -->
+					<div class="side-menu opacity-0 gradient-bg hidden">
+						<div class="inner-wrapper">
+							<span class="btn-close btn-close-no-padding" id="btn_sideNavClose">
+								<i></i>
+								<i></i>
+							</span>
+							<nav class="side-nav w-100">
+								<ul class="navbar-nav">
+
+									<li class="nav-item">
+										<a class="nav-link" href="{{ path('home') }}">
+											Accueil</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages1">
+											Montres
+											<i class="fas fa-chevron-down"></i>
+										</a>
+										<div id="sideNavPages1" class="collapse sideNavPages">
+
+											<ul class="navbar-nav mt-2">
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">WomensWear</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Classic Dress</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Nightwear</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Active wear</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Footwear / Shoes</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Coats / Outerwear</a>
+												</li>
+											</ul>
+											<h5 class="sub-title">1. All Accessories</h5>
+											<ul class="navbar-nav mt-2">
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Hand Bags</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Belts</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Jewellery</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Scarves</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Sun Glasses</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">
+														Others</a>
+												</li>
+											</ul>
+
+											<h5 class="sub-title">2. Babies</h5>
+											<ul class="navbar-nav mt-2">
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Baby Clothes</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Baby Footwear</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Sleep Suits</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Socks And Tights</a>
+												</li>
+											</ul>
+
+											<h5 class="sub-title">3. Shop Collection</h5>
+											<ul class="navbar-nav mt-2">
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Holiday Shop</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Gifts</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Workwear Range</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Essential</a>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages3">
+											Clothes
+											<i class="fas fa-chevron-down"></i>
+										</a>
+										<div id="sideNavPages3" class="collapse sideNavPages">
+											<ul class="navbar-nav mt-2">
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Dresses</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">
+														Hoodies & Sweatshirts</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Top</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Shoes & Trainers</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Jeans</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Shorts</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Loungewear</a>
+												</li>
+											</ul>
+											<h5 class="sub-title">1. Others</h5>
+											<ul class="navbar-nav mt-2">
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">All Clothing</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Shoes</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">ActiveWear</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Treading Now</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Accessories</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Face + Body</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Back in stock</a>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="javascript:void(0)">Shoes</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages2">
+											Pages
+											<i class="fas fa-chevron-down"></i>
+										</a>
+										<div id="sideNavPages2" class="collapse sideNavPages">
+											<ul class="navbar-nav">
+												<li class="nav-item">
+													<a class="nav-link" href="javascript:void(0)">Listing One</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="#">Detail Page</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" href="#">StandAlone Page</a>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#">Contact</a>
+									</li>
+								</ul>
+							</nav>
+							<div class="side-footer w-100">
+								<ul class="social-icons-simple white top40">
+									<li>
+										<a class="facebook-bg-hvr" href="javascript:void(0)">
+											<i class="fab fa-facebook-f"></i>
+										</a>
+									</li>
+									<li>
+										<a class="twitter-bg-hvr" href="javascript:void(0)">
+											<i class="fab fa-twitter"></i>
+										</a>
+									</li>
+									<li>
+										<a class="instagram-bg-hvr" href="javascript:void(0)">
+											<i class="fab fa-instagram"></i>
+										</a>
+									</li>
+								</ul>
+								<p class="whitecolor">&copy;
+									<span id="year"></span>
+									Product Shop. Made With 💚 by
+									<a href="https://mydev.fr" target="_blank">myDev</a>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div id="close_side_menu" class="tooltip"></div>
+					<!-- End side menu -->
+				</header>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- END HEADER NAVIGATION -->

@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Validez votre commande
+{% endblock %}
+{% set banner_bis = banner_bis | default({}) | merge({
+    "title"       : "Validez votre commande",
+    "desc"       : "Nous espérons que le projet présenté vous plaise. Choisissez votre moyen de livraison.",
+}) %}
+{% block banner_bis  %}{% endblock %}
+
+{% block content %}
+	<!-- START SHOP CART SECTION -->
+	<div class="shop-cart wow slideInUp" data-wow-duration="2s">
+		<div
+			class="container mb-5">
+			<!-- START SHOP CART CHECKOUT FORM -->
+			<div class="row pt-5">
+				<div class="col-12 col-lg-6 wow slideInLeft" data-wow-duration="2s">
+					<div class="calculate-shipping">
+						<h4 class="heading">Récapitulatif</h4>
+						<div class="col-12 col-md-12  cart_table wow fadeInUp animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
+							<div class="table-responsive">
+								<table class="table table-bordered border-radius">
+
+									<tbody>
+										{% set total = null %}
+										{% for product in cart %}
+											<tr>
+												<td>
+													<div class="d-table product-detail-cart">
+
+														<div class="media">
+															<div class="row no-gutters">
+
+																<div class="col-12 col-lg-5 product-detail-cart-image">
+																	<a class="shopping-product" href="#"><img class="rounded" src="/uploads/{{ product.product.illustration }}" alt="{{ product.product.name }}"></a>
+																</div>
+
+
+															</div>
+														</div>
+													</div>
+
+												</td>
+												<td>
+													{{ product.product.name }}<br/>
+													<small>{{ (product.product.price /100)|number_format(2,',','.')}}
+														€</small>
+												</td>
+												<td class="text-center">
+													<a href="{{ path('decrease_to_cart', {'id' : product.product.id}) }}">
+														<i class="fas fa-minus-circle"></i>
+													</a>
+													{{ product.quantity }}
+													<a href="{{ path('add_to_cart', {'id' : product.product.id}) }}">
+														<i class="fas fa-plus-circle"></i>
+													</a>
+												</td>
+
+												<td class="text-center">
+													<a href="{{ path('delete_to_cart', {'id' : product.product.id}) }}" class="btn-close">
+														<i class="lni-trash"></i>
+													</a>
+												</td>
+												{% set total = total + (product.product.price * product.quantity) %}
+
+											</tr>
+										{% endfor %}
+
+									</tbody>
+								</table>
+							</div>
+
+							<div class="apply_coupon">
+								<div class="row">
+									<div class="col-12 text-right">
+										<p>
+											<b>Nombre de produits :</b>
+											{{ cart|length }}</p>
+										<p>
+											<b>Total de mon panier :</b>
+											{{ (total /100)|number_format(2,',','.')}}
+											€</p>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-lg-6 wow slideInRight" data-wow-duration="2s">
+					<div class="card-total">
+						<h4 class="heading">Total</h4>
+						<table>
+							<tr>
+								<td>Sous Total</td>
+								<td>{{ (total /100)|number_format(2,',','.')}}
+									€</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>
+									<div class="btn-group">
+										<ul class="color-grey">
+
+											{% set formHtml %}
+											{{ form_start(form, {action:path('order_recap')}) }}
+
+											{{ form_end(form) }}
+											{% endset %}
+											<li>
+												<a href="{{ path('account_adress_add') }}" class="btn pink-gradient-btn-into-black ">Ajouter une nouvelle adresse</a>
+												<hr/>
+											</li>
+
+											{{ formHtml|replace({'[br]' : '<br/>'})|raw }}
+										</ul>
+
+									</div>
+
+								</td>
+							</tr>
+
+						</table>
+					</div>
+				</div>
+			</div>
+			<!-- END SHOP CART CHECKOUT FORM -->
+		</div>
+	</div>
+
+
+{% endblock %}

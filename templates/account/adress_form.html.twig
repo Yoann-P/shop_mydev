@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une adresse
+{% endblock %}
+
+{% set banner_bis = banner_bis | default({}) | merge({
+    "title"       : "Adresse de livraison",
+    "desc"       : "Toujours sur notre site démo ! la visite se termine bientôt.",
+}) %}
+{% block banner_bis  %}{% endblock %}
+
+
+{% block content %}
+	<div class="container mt-5 mb-5">
+		<a href="{{ path('account_adress') }}">
+			<i class="fas fa-arrow-circle-left"></i>
+			Retour</a><hr>
+		{{ form_start(form) }}
+		<div class="row">
+			<div class="col-12">
+				<strong>{{ form_row(form.name) }}</strong>
+			</div>
+			<div class="col-md-6">
+				{{ form_row(form.firstname) }}</div>
+			<div class="col-md-6">
+				{{ form_row(form.lastname) }}</div>
+			<div class="col-md-6">
+				{{ form_row(form.company) }}</div>
+			<div class="col-md-6">
+				{{ form_row(form.adress) }}</div>
+			<div class="col-md-6">
+				{{ form_row(form.postal) }}</div>
+			<div class="col-md-6">
+				{{ form_row(form.city) }}</div>
+			<div class="col-md-6">
+				{{ form_row(form.country) }}</div>
+			<div class="col-md-6">
+				{{ form_row(form.phone) }}</div>
+		</div>
+		{{ form_end(form) }}
+	</div>
+	<hr>
+{% endblock %}

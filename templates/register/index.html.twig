@@ -1,0 +1,137 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription
+{% endblock %}
+{% set banner_bis = banner_bis | default({}) | merge({
+    "title"       : "Création de compte",
+    "desc"       : "Créez votre compte démo afin de poursuivre l'aventure 😁",
+}) %}
+{% block banner_bis  %}{% endblock %}
+
+{% block content %}
+
+	{{ form_start(form)}}
+
+	{% if notification %}
+		<small class="error">{{ notification }}</small>
+	{% endif %}
+	<!-- START MAIN CONTENT  -->
+	<div
+		class="signup-form">
+
+		<!--  START MANAGE CONTEND  -->
+		<div
+			class="about_content">
+			<!--  START FORM SECTION  -->
+			<div class="row no-gutters">
+				<div class="col-lg-6 col-md-12 col-sm-12 pr-lg-0 whitebox wow slideInLeft">
+					<div class="widget logincontainer register-account pt-0">
+						<h3 class="bottom35 text-center text-md-left">Remplissez le formulaire
+						</h3>
+						<form class="getin_form border-form" id="register">
+							<div class="row">
+								<div class="col-md-12 col-sm-12">
+									<div class="form-group bottom35">
+										<label for="registerEmail">Adresse E-mail</label>
+										{{ form_widget(form.email) }}
+										{{ form_errors(form.email) }}
+										{% if notificationIsEmail %}
+											<small class="error">{{ notificationIsEmail }}</small>
+										{% endif %}
+										{# <input class="form-control" type="email" placeholder="Email:" required="" id="registerEmail"> #}
+									</div>
+								</div>
+								<div class="col-md-12 col-sm-12">
+									<div class="form-group bottom35">
+										<label for="registerName">Nom d'utilisateur</label>
+										{{ form_widget(form.pseudo) }}
+										{{ form_errors(form.pseudo) }}
+										{% if notificationIsPseudo %}
+											<small class="error">{{ notificationIsPseudo }}</small>
+										{% endif %}
+										{# <input class="form-control" type="text" placeholder="Full Name:" required="" id="registerName"> #}
+									</div>
+								</div>
+								<div class="col-md-12 col-sm-12">
+									<div class="form-group bottom35">
+										{{ form_widget(form.password) }}
+										{{ form_errors(form.password) }}
+										{# <input class="form-control" type="password" placeholder="Password:" required="" id="registerPass">  #}
+									</div>
+								</div>
+
+								<div class="col-sm-12 register-btn">
+									{{form_widget(form.submit)}}
+
+									<p class="top20 SignInclass mt-3">
+										Déjà inscrit ? &nbsp;<a href="{{ path('app_login') }}">Connectez-vous !</a>
+									</p>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-12 col-sm-12 registeration-detail wow slideInRight" data-wow-delay=".9s">
+					<div class="heading-area pl-lg-4 p-0">
+						<h2 class="title">shop.mydev.fr DEMO</h2>
+						<p class="paragraph">
+							shop.mydev.fr est un
+							<strong>site de démonstration</strong>
+							qui vous permet de simuler un achat de montres.<br/>
+							Au sein de l' aperçu des compétences que nous mettons à votre disposition, nous vous proposons les fonctionnalités suivantes:<br/>
+
+							<!--List-->
+							<ul class="about-list">
+
+								<li>
+									<i class="lni-check-mark-circle a-icon  mr-lg-3 mr-sm-2"></i>
+									<span>
+										<a href="/nos-produits">Filtres</a>
+									</span>
+								</li>
+
+								<li>
+									<i class="lni-check-mark-circle a-icon  mr-lg-3 mr-sm-3"></i>
+									<span>
+										<a href="/mon-panier">Panier</a>
+									</span>
+								</li>
+								<li>
+									<i class="lni-check-mark-circle a-icon  mr-lg-3 mr-sm-2"></i>
+									<span>
+										<a href="/inscription">Inscription</a>
+									</span>
+								</li>
+								<li>
+									<i class="lni-check-mark-circle a-icon  mr-lg-3 mr-sm-2"></i>
+									<span>
+										<a href="/connexion">Connexion</a>
+									</span>
+								</li>
+								<li>
+									<i class="lni-check-mark-circle a-icon  mr-lg-3 mr-sm-2"></i>
+									<span>
+										<a href="/commande">Gestion du compte / commandes ...</a>
+									</span>
+								</li>
+
+							</ul>
+							<span>Merci de jouer le jeu en créant votre compte démo.<br/>
+								Les données de la CB de test qui vous seront transmises n'as pas de plafond 🤑
+							</span>
+						</p>
+					</div>
+				</p>
+			</div>
+		</div>
+		<!--  END FORM SECTION  -->
+
+	</div>
+	<!--  END MANAGE CONTEND  -->
+
+
+</div>
+<!-- END MAIN CONTENT  -->
+
+
+{{ form_end(form) }}{% endblock %}

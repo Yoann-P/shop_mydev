@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page introuvable
+{% endblock %}
+
+{% block content %}
+
+	<div class="row no-gutters mb-5">
+		<div class="col-lg-3"></div>
+		<div class="col-lg-6 col-md-12 col-sm-12 pr-lg-0 whitebox wow slideInLeft" style="visibility: visible; animation-name: slideInLeft;">
+			<div class="widget logincontainer register-account">
+				<h1 class="h3 mb-3 font-weight-normal">Page introuvable</h1>
+				<hr>
+				<p class="mb-5">Désolé, cette page ne semble pas être accessible pour le moment.</p>
+				<a href="{{ path('home') }}" class="btn pink-gradient-btn-into-black btn">Revenir à l'accueil</a>
+
+			</div>
+		</div>
+		<div class="col-lg-3"></div>
+	</div>
+
+{% endblock %}

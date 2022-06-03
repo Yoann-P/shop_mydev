@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmation de commande - shop myDev
+{% endblock %}
+{% set banner_bis = banner_bis | default({}) | merge({
+    "title"       : "Votre commande",
+    "desc"       : "Nous vous remercions d'avoir joué le jeu. L'accès à vos informations et votre suivi de commandes fictives est toujours possible.",
+}) %}
+{% block banner_bis  %}{% endblock %}
+{% block content %}
+	<div class="col-12  text-center m-5 wow slideInUp" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-name: slideInUp;">
+		<h1 class="heading">Confirmation de commande</h1>
+		<p class="para_text ">
+			Bonjour
+			<strong>{{ order.user.firstname }}
+				{{ order.user.lastname }}</strong>,<br/>
+			Nous vous remercions pour votre commande n°<strong>{{ order.reference }}</strong>.<br/>
+			Une confirmation vient de vous être envoyée par email à l'adresse
+			<strong>{{ order.user.email }}</strong>.
+			<hr>
+			Votre commande sera livrée par
+			<strong>{{ order.carrierName }}</strong>
+			à l'adresse suivante :
+			<br/>
+			{{ order.delivery|raw }}
+			<hr>
+			Pour suivre votre commande,
+			<br/>
+			<a href="{{ path('account_order') }}" class="btn pink-gradient-btn-into-black ">rendez-vous dans votre
+															compte</a>.
+		</p>
+	</div>
+
+{% endblock %}

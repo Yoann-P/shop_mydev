@@ -1,0 +1,54 @@
+{# {{ product.subtitle }} #}
+<div class="cbp-item  {{ product.category }} wow slideInUp">
+	<a class="portfolio-circle-cart" href="{{ path('add_to_cart',{'id' : product.id}) }}">
+		<i class="fa fa-shopping-cart"></i>
+	</a>
+	<div class="cbp-caption-defaultWrap  owl-theme sync-portfolio-carousel owl-carousel">
+		<div class="item">
+			<a href="./produit/{{ product.slug }}"><img src="/uploads/{{ product.illustration }}" alt="">
+			</a>
+		</div>
+		<div class="item">
+			<a href="./produit/{{ product.slug }}"><img src="/uploads/{{ product.illustration }}" alt=""></a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 text-center">
+			<a href="./produit/{{ product.slug }}" class="cbp-l-grid-blog-title portfolio-title bg-white">{{ product.name }}</a>
+		</div>
+		<div class="col-12 text-center">
+			<div class="cbp-l-grid-blog-desc portfolio-desc bg-white">{{ (product.price / 100)|number_format(2, ',', '.') }}
+				€</div>
+		</div>
+	</div>
+</div>
+
+
+{# 
+<div class="cbp-item {{ product.category }} wow slideInUp position-relative mb-5">
+	<div class="position-relative">
+	<a href="#" class="shop-addto-cart">
+			<i class="fa fa-shopping-cart"></i>
+		</a>
+
+		<div class="cbp-caption-defaultWrap  owl-theme sync-portfolio-carousel owl-carousel">
+			<div class="item image-effect">
+				<a href="/uploads/{{ product.illustration }}" class="cbp-caption" data-fancybox="gallery1" data-title="Shirt Name"><img src="/uploads/{{ product.illustration }}" alt=""></a>
+			</div>
+			<div class="item image-effect">
+				<a href="/uploads/{{ product.illustration }}" class="cbp-caption" data-fancybox="gallery1" data-title="Shirt Name"><img src="/uploads/{{ product.illustration }}" alt=""></a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 text-center">
+				<a href="shop/product-detail.html" target="_blank" class="cbp-l-grid-blog-title portfolio-title">{{ product.name }}
+				</a>
+			</div>
+			<div class="col-12 text-center">
+				<div class="cbp-l-grid-blog-desc portfolio-des">{{ (product.price / 100)|number_format(2, ',', '.') }}
+					€</div>
+			</div>
+		</div>
+	</div>
+
+</div> #}

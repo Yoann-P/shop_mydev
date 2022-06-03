@@ -1,0 +1,225 @@
+nav {
+    width: 120px;
+}
+
+.wave-wrap {
+    position: relative;
+    width: 100%;
+    height: 33px;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.wave-wrap #wave .path {
+    fill: #183b56;
+}
+
+.list-wrap {
+    display: flex;
+    width: 100%;
+    height: 44px;
+    background: #183b56;
+    list-style: none;
+    justify-content: space-around;
+    padding: 0 20px;
+    border-radius: 100px;
+}
+
+.list-wrap li {
+    cursor: pointer!important;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.list-wrap li i {
+    position: relative;
+    font-size: 1.5em;
+    color: #a4b0be;
+    z-index: 5;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.list-wrap li:before {
+    content: "";
+    position: absolute;
+    background: white;
+    height: 80%;
+    width: 80%;
+    left: 10%;
+    top: 10%;
+    border-radius: 50%;
+    z-index: 0;
+    transform: scale(0);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.list-wrap li.active,
+.list-wrap li.is_active {
+    margin-top: -10px;
+}
+
+.list-wrap li.active i,
+.list-wrap li.is_active i {
+    color: #fff;
+}
+
+.list-wrap li.active:before {
+    transform: scale(1);
+}
+
+.list-wrap li.is_active:before {
+    transform: scale(1);
+}
+
+.list-wrap li:nth-child(1):before {
+    background: #183b56;
+}
+
+.is__dark .list-wrap li i {
+    color: #a4b0be;
+}
+
+.is__dark .list-wrap {
+    background: #fff!important;
+}
+
+.is__dark .list-wrap li.active i {
+    color: #183b56;
+}
+
+.is__dark .list-wrap li.is_active i {
+    color: #183b56;
+}
+
+
+/*
+.list-wrap li:nth-child(2):before {
+    background: #ff6b81;
+}
+
+.list-wrap li:nth-child(3):before {
+    background: #7bed9f;
+}
+
+.list-wrap li:nth-child(4):before {
+    background: #70a1ff;
+}
+
+.list-wrap li:nth-child(5):before {
+    background: #dfe4ea;
+} */
+
+.bg-video video {
+    position: absolute;
+    width: auto;
+    height: 320px;
+    left: 0;
+    top: 0;
+    -webkit-box-shadow: 0px 17px 13px 0px #192c4b05;
+    box-shadow: 0px 17px 13px 0px #192c4b05;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: -1;
+}
+
+.bg-video-log video {
+    position: absolute;
+    width: auto;
+    height: 100%;
+    left: 0;
+    top: 0%;
+    -webkit-box-shadow: 0px 17px 13px 0px #192c4b05;
+    box-shadow: 0px 17px 13px 0px #192c4b05;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: -1;
+}
+
+
+/* Media Query for devices withi coarse pointers and no hover functionality */
+
+
+/* This will use a fallback image instead of a video for devices that commonly do not support the HTML5 video element */
+
+@media (pointer: coarse) and (hover: none) {
+    .bg-video {
+        background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+    }
+    .bg-video video {
+        display: none;
+    }
+}
+
+.bottom-video {
+    background: #ecf1f9;
+    height: 20%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+}
+
+.is__dark .bottom-video {
+    background: #0c1b27;
+}
+
+.is__dark .bg-video video,
+.is__dark .bg-video-log video {}
+
+.is__dark .log {
+    /* background: #0c1b27; */
+}
+
+.edit_box::before {
+    content: "";
+    position: absolute;
+    background: url(../img/bg/ce.png);
+    background-size: cover;
+    height: 25rem;
+    width: 25rem;
+    top: -10rem;
+    right: 20rem;
+    z-index: -1;
+}
+
+.header__1 .header__logo img {
+    height: 3rem!important;
+}
+
+.header__1 {
+    border-bottom: solid 1px #cfd4dd;
+}
+
+.site_title h2 {
+    font-size: 1.5rem!important;
+    display: inline;
+    letter-spacing: 0.03;
+    line-height: unset;
+}
+
+.header__logo,
+.site_title {
+    display: inline;
+}
+
+.error {
+    color: #e95432;
+    ;
+}
+
+.invalid-feedback {
+    border-top: 1px solid;
+}
+
+#register_password .row {
+    margin-bottom: 10px;
+}
+
+.pb-100px {
+    padding-bottom: 100px;
+}

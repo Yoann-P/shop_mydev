@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vos commandes
+{% endblock %}
+{% set banner_bis = banner_bis | default({}) | merge({
+    "title"       : "Mes commandes",
+    "desc"       : "",
+}) %}
+{% block banner_bis  %}{% endblock %}
+
+{% block content %}
+	<!-- START SHOP CART SECTION -->
+	<div class="shop-cart wow slideInUp m-5" data-wow-duration="2s">
+		<div class="container">
+			<a href="{{ path('account') }}">
+				<i class="fas fa-arrow-circle-left"></i>
+				Retour</a>
+
+			<!-- START SHOP CART TABLE -->
+			<div class="row pt-5">
+				<div class="col-12 col-md-12  cart_table wow fadeInUp animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
+					{% if orders|length == 0 %}
+						<p>Vous n'avez pas encore de commandes.</p>
+					{% else %}
+						<div class="table-responsive">
+							<table class="table table-bordered border-radius">
+								<thead>
+									<tr>
+										<th class="darkcolor">Référence</th>
+										<th class="darkcolor">Statut</th>
+										<th class="darkcolor">Passée le</th>
+										<th class="darkcolor">Produit(s)</th>
+										<th class="darkcolor">Total</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for order in orders %}
+										<tr>
+											<td>
+												<span class="badge pink-gradient-btn-into-black p-0 p-1">{{ order.reference }}</span>
+											</td>
+											<td>
+												{% if order.state == 1 %}
+													Paiement accepté
+												{% elseif order.state == 2 %}
+													Préparation en cours
+												{% elseif order.state == 3 %}
+													Livraison en cours
+												{% endif %}
+											</td>
+											<td>{{ order.createdAt|date('d/m/Y') }}</td>
+											<td>{{ order.orderDetails|length }}</td>
+											<td>{{ ((order.carrierPrice + order.getTotal) / 100)|number_format(2, ',', '.') }}
+												€</td>
+											<td class="text-right">
+												<a href="{{ path('account_order_show', { 'reference' : order.reference }) }}" class="btn pink-gradient-btn-into-black ">Voir ma commande</a>
+											</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					{% endif %}
+
+				</div>
+			</div>
+			<!-- END SHOP CART TABLE -->
+
+
+		</div>
+	</div>
+
+{% endblock %}

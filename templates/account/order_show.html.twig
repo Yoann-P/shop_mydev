@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ma commande
+{% endblock %}
+
+{% set banner_bis = banner_bis | default({}) | merge({
+    "title"       : "Votre commande",
+    "desc"       : "Pour un visu de la partie Admin du site, contactez nous. Nous vous donnerons la gestion de l'état des commandes fictives.",
+}) %}
+{% block banner_bis  %}{% endblock %}
+
+{% block content %}
+	<div class="shop-cart wow slideInUp m-5" data-wow-duration="2s">
+		<div class="container">
+			<div class="row">
+				<div class="col-6">
+					<a href="{{ path('account_order') }}">
+						<i class="fas fa-arrow-circle-left"></i>
+						Retour</a>
+				</div>
+				<div class="col-6 text-right">
+					Ma commande
+					<b>{{ order.reference }}</b>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-12">
+					<b>Statut de la commande :
+					</b>
+					{% if order.state == 1 %}
+						Paiement accepté
+					{% elseif order.state == 2 %}
+						Préparation en cours
+					{% elseif order.state == 3 %}
+						Livraison en cours
+					{% endif %}
+				</div>
+				<div class="col-12">
+					<b>Commande passée le :</b>
+					{{ order.createdAt|date('d/m/Y') }}</div>
+				<div class="col-12">
+					<b>Référence de ma commande :</b>
+					{{ order.reference }}</div>
+				<div class="col-12">
+					<b>Transporteur :</b>
+					{{ order.carriername }}</div>
+			</div>
+			<hr/>
+			<strong>Détails</strong>
+
+			<table class="table mt-4">
+				<thead>
+					<tr>
+						<th scope="col">Produit</th>
+						<th scope="col">Quantité</th>
+						<th scope="col">Prix unitaire</th>
+						<th scope="col">Total</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for product in order.orderDetails %}
+						<tr>
+							<td>{{ product.product }}</td>
+							<td>x{{ product.quantity }}</td>
+							<td>{{ (product.price / 100)|number_format(2, ',', '.') }}
+								€</td>
+							<td>{{ (product.total / 100)|number_format(2, ',', '.') }}
+								€</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+
+			<div class="text-right">
+				<strong>Sous-total :</strong>
+				{{ (order.getTotal / 100)|number_format(2, ',', '.') }}
+				€<br/>
+				<strong>Livraison :</strong>
+				{{ (order.carrierprice / 100)|number_format(2, ',', '.') }}
+				€<br/>
+				<strong>Total :
+				</strong>
+				{{ ((order.carrierPrice + order.getTotal) / 100)|number_format(2, ',', '.') }}
+				€
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier
+{% endblock %}
+{# {% block slider %}{% endblock %} #}
+{% set banner_bis = banner_bis | default({}) | merge({
+    "title"       : "Votre panier",
+    "desc"       : "Séduit par le concept ? Poursuivez l’expérience en validant la commande 😉  (site démo)",
+}) %}
+{% block banner_bis  %}{% endblock %}
+
+{% block content %}
+	<!-- START HEADING SECTION -->
+	<div class="about_content">
+		{% if cart|length > 0 %}
+			{# 
+																		<div class="container">
+																			<div class="row">
+																				<div class="col-12  text-center text-lg-left wow slideInUp" data-wow-duration="2s">
+																					<h1 class="heading">Get Ready For Checkout?</h1>
+																					<p class="para_text w-100 w-lg-75">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A dolores explicabo laudantium, omnis provident quam reiciendis voluptatum?</p>
+																				</div>
+																			</div>
+																		</div> #}
+
+
+			<!-- START SHOP CART SECTION -->
+				<div class="shop-cart wow slideInUp" data-wow-duration="2s"> <div
+					class="container">
+					<!-- START SHOP CART TABLE -->
+					<div class="row pt-5">
+						<div class="col-12 col-md-12  cart_table wow fadeInUp animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
+							<div class="table-responsive">
+								<table class="table table-bordered border-radius">
+									<thead>
+										<tr>
+											<th class="darkcolor">Product</th>
+											<th class="darkcolor">Price</th>
+											<th class="darkcolor">Quantity</th>
+											<th class="darkcolor">Total</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										{% set total = null %}
+										{% for product in cart %}
+											<tr>
+												<td>
+													<div class="d-table product-detail-cart">
+
+														<div class="media">
+															<div class="row no-gutters">
+
+																<div class="col-12 col-lg-5 product-detail-cart-image">
+																	<a class="shopping-product" href="#"><img src="/uploads/{{ product.product.illustration }}" alt="{{ product.product.name }}"></a>
+																</div>
+
+																<div class="col-12 col-lg-7 mt-auto product-detail-cart-data">
+																	<div class="media-body ml-lg-3">
+																		<h4 class="product-name">
+																			<a href="./produit/{{ product.product.slug }}">{{ product.product.name }}</a>
+																		</h4>
+																		<p class="product-des">{{ product.product.description }}</p>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</td>
+												<td>
+													<h4 class="text-center amount">{{ (product.product.price /100)|number_format(2,',','.')}}
+														€</h4>
+												</td>
+												<td class="text-center">
+													<a href="{{ path('decrease_to_cart', {'id' : product.product.id}) }}">
+														<i class="fas fa-minus-circle"></i>
+													</a>
+													{{ product.quantity }}
+													<a href="{{ path('add_to_cart', {'id' : product.product.id}) }}">
+														<i class="fas fa-plus-circle"></i>
+													</a>
+												</td>
+												<td>
+													<h4 class="text-center amount">{{ (product.product.price * product.quantity /100)|number_format(2,',','.')}}
+														€</h4>
+												</td>
+												<td class="text-center">
+													<a href="{{ path('delete_to_cart', {'id' : product.product.id}) }}" class="btn-close">
+														<i class="lni-trash"></i>
+													</a>
+												</td>
+												{% set total = total + (product.product.price * product.quantity) %}
+
+											</tr>
+										{% endfor %}
+
+									</tbody>
+								</table>
+							</div>
+
+							<div class="apply_coupon">
+								<div class="row">
+									<div class="col-12 text-right">
+										<p>
+											<b>Nombre de produits :</b>
+											{{ cart|length }}</p>
+										<p>
+											<b>Total de mon panier :</b>
+											{{ (total /100)|number_format(2,',','.')}}
+											€</p>
+									</div>
+									<div class="col-12 text-left">
+										<a href="{{ path('order')}}" class="btn  pink-gradient-btn-into-black">VALIDER MA COMMANDE</a>
+										{# <a href="shop-cart.html" class="btn pink-color-black-gradient-btn ">CHECKOUT</a> #}
+									</div>
+									<!--                            <div class="col-6  coupon text-left">-->
+								<!--                                <a href="shop-cart.html" class="btn pink-color-black-gradient-btn ">CHECKOUT</a>-->
+									<!--                            </div>-->
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- END SHOP CART TABLE -->
+
+
+				</div>
+			</div>
+			<!-- END SHOP CART SECTION-->
+		{% else %}
+			<div class="container">
+				<div class="row">
+					<div class="col-12  text-center text-center wow slideInUp pt-5" data-wow-duration="2s">
+						<h2 class="heading pb-3">Votre panier est vide.</h1>
+					</div>
+				</div>
+			</div>
+
+		{% endif %}
+
+	</div>
+	<!-- END HEADING SECTION -->
+{% endblock %}

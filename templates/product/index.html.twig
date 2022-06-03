@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos produits - La Boutique Française
+{% endblock %}
+{% set banner_bis = banner_bis | default({}) | merge({
+    "title"       : "Nos produits",
+    "desc"       : "En espérant que la mise en avant des produits fictifs vous plaise, nous saurons nous adapter à votre demande. Bonne visite 😉 (site démo)",
+}) %}
+{% block banner_bis  %}{% endblock %}
+
+{% block content %}
+	<div class="portfolio-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-lg-3">
+					<h5 class="pb-2">Filtrer</h5>
+					<div class="custom-control custom-checkbox">
+						{{ form(form) }}
+						</div>
+					</div>
+					<div class="col-12 col-lg-9">
+						<div class="row">
+							{% for product in products %}
+								<div class="col-6 col-lg-4 mb-4">
+									<div class="cbp-item  {{ product.category }} wow slideInUp m-0">
+										<a class="portfolio-circle-cart" href="{{ path('add_to_cart',{'id' : product.id}) }}">
+											<i class="fa fa-shopping-cart"></i>
+										</a>
+										<div class="owl-theme ">
+											<div class="item">
+												<a href="./produit/{{ product.slug }}"><img class="w-100" src="/uploads/{{ product.illustration }}" alt="">
+												</a>
+											</div>
+
+										</div>
+										<div class="row">
+											<div class="col-12 text-center">
+												<a href="./produit/{{ product.slug }}" class="cbp-l-grid-blog-title portfolio-title bg-white">{{ product.name }}</a>
+											</div>
+											<div class="col-12 text-center">
+												<div class="cbp-l-grid-blog-desc portfolio-desc bg-white">{{ (product.price / 100)|number_format(2, ',', '.') }}
+													€</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endblock %}

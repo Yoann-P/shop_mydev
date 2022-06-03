@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La Moufette
+{% endblock %}
+
+{% block content %}
+	<div class="container pb-100px">
+		<div class="hero_newsletter box bg_white">
+			<div class="row gx-5 align-items-center mb-5 mb-5">
+				<div class="col-lg-6 left__side">
+					<div class="content space-y-20 mb-5">
+						<h1 class="hero__title pb-3">shop.mydev.fr démo</h1>
+						<p class="hero__desc">Votre inscription s'est correctement déroulée.<br/>
+							Vous pouvez dès à présent vous connecter à votre compte.</p>
+						<p class="hero__desc">Merci de jouer le jeu.<br/>Nous allons passer à la validation de commande (Nous espérons que votre panier soit bien rempli 😉 )
+						</p>
+						<p>
+							<a href="./connexion" class="btn pink-gradient-btn-into-black">Connexion</a>
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-6 right__side">
+					<img class="img-fluid hero__img" id="img_email" src="./img/send-mail.jpg" alt="E-mail de confirmation envoyé">
+				</div>
+
+			</div>
+		</div>
+	</div>
+{% endblock %}

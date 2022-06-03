@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Meta Tags -->
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+		<meta
+		name="robots" content="noindex, nofollow">
+
+		<!-- Author -->
+		<meta
+		name="author" content="myDev">
+		<!-- description -->
+		<meta
+		name="description" content="Shop myDev - Démonstration">
+		<!-- Page Title -->
+		<title>shop myDev | Démonstration</title>
+		<!-- Favicon -->
+		<link
+		rel="icon" href="{{asset('img/favicon.ico')}}">
+		<!-- Bundle -->
+		<link
+		rel="stylesheet" href="{{asset('vendor/css/bundle.min.css')}}">
+		<!-- Plugin Css -->
+		<link rel="stylesheet" href="{{asset('vendor/css/jquery.fancybox.min.css')}}">
+		<link rel="stylesheet" href="{{asset('vendor/css/owl.carousel.min.css')}}">
+		<link rel="stylesheet" href="{{asset('vendor/css/swiper.min.css')}}">
+		<link rel="stylesheet" href="{{asset('vendor/css/cubeportfolio.min.css')}}">
+		<link rel="stylesheet" href="{{asset('vendor/css/wow.css')}}">
+		<link rel="stylesheet" href="{{asset('vendor/css/LineIcons.min.css')}}">
+		<link rel="stylesheet" href="{{asset('css/nouislider.min.css')}}">
+		<link
+		rel="stylesheet" href="{{asset('css/range-slider.css')}}">
+		<!-- Slider Setting Css  -->
+		<link
+		rel="stylesheet" href="{{asset('css/settings.css')}}">
+		<!-- Mega Menu  -->
+		<link
+		rel="stylesheet" href="{{asset('css/megamenu.css')}}">
+		<!-- StyleSheet  -->
+		<link
+		rel="stylesheet" href="{{asset('css/style.css')}}">
+		<!-- Custom Css  -->
+		<link rel="stylesheet" href="{{asset('css/custom.css')}}">
+
+	</head>
+	<body>
+
+
+		<a class="scroll-top-arrow" href="javascript:void(0);">
+			<i class="fa fa-angle-up"></i>
+		</a>
+
+		<!--START LOADER-->
+		<div class="loader1">
+			<div class="loader-inner">
+				<div id="preloader">
+					<div id="loader"></div>
+				</div>
+			</div>
+		</div>
+		<!--END LOADER-->
+		{% include "site/header.html.twig" %}
+		{% if block('slider') is defined %}
+			{% include "site/slider.html.twig" %}
+		{% endif %}
+
+		{% block products %}{% endblock %}
+		{% if block('banner') is defined %}
+			{% include "site/banner.html.twig" %}
+		{% endif %}
+		{% if block('banner_bis') is defined %}
+			{% include "site/banner_bis.html.twig" %}
+		{% endif %}
+		{% if block('hero') is defined %}
+			{# {% include "site/hero.html.twig" %} #}
+		{% endif %}
+		{% if block('content') is defined %}
+			{% block content %}{% endblock %}
+		{% endif %}
+		{% if block('latest') is defined %}
+			{% include "site/latest.html.twig" %}
+		{% endif %}
+
+		{% include "site/footer.html.twig" %}
+		{% include "site/search.html.twig" %}
+
+
+		<!-- JavaScript -->
+		<script src="{{asset('vendor/js/bundle.min.js')}}"></script>
+		<!-- Plugin Js -->
+		<script src="{{asset('vendor/js/jquery.fancybox.min.js')}}"></script>
+		<script src="{{asset('vendor/js/owl.carousel.min.js')}}"></script>
+		<script src="{{asset('vendor/js/swiper.min.js')}}"></script>
+		<script src="{{asset('vendor/js/jquery.cubeportfolio.min.js')}}"></script>
+		<script src="{{asset('vendor/js/wow.min.js')}}"></script>
+		<script src="{{asset('vendor/js/bootstrap-input-spinner.js')}}"></script>
+		<script src="{{asset('vendor/js/parallaxie.min.js')}}"></script>
+		<script src="{{asset('vendor/js/stickyfill.min.js')}}"></script>
+		<script src="{{asset('js/nouislider.min.js')}}"></script>
+
+		<script src="{{asset('vendor/js/jquery.themepunch.tools.min.js')}}"></script>
+		<script src="{{asset('vendor/js/jquery.themepunch.revolution.min.js')}}"></script>
+		<!-- SLIDER REVOLUTION EXTENSIONS -->
+		<script src="{{asset('vendor/js/extensions/revolution.extension.actions.min.js')}}"></script>
+		<script src="{{asset('vendor/js/extensions/revolution.extension.carousel.min.js')}}"></script>
+		<script src="{{asset('vendor/js/extensions/revolution.extension.kenburn.min.js')}}"></script>
+		<script src="{{asset('vendor/js/extensions/revolution.extension.layeranimation.min.js')}}"></script>
+		<script src="{{asset('vendor/js/extensions/revolution.extension.migration.min.js')}}"></script>
+		<script src="{{asset('vendor/js/extensions/revolution.extension.navigation.min.js')}}"></script>
+		<script src="{{asset('vendor/js/extensions/revolution.extension.parallax.min.js')}}"></script>
+		<script src="{{asset('vendor/js/extensions/revolution.extension.slideanims.min.js')}}"></script>
+		<script src="{{asset('vendor/js/extensions/revolution.extension.video.min.js')}}"></script>
+
+		<!-- Custom Script si version different de mobile -->
+
+		{# {% if app.request.query.get("v") != "mobile" %}
+				{% endif %} #}
+		<script src="{{asset('js/script.js')}}"></script>
+
+	</body>
+</html>

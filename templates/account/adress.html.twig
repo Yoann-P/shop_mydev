@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes adresses
+{% endblock %}
+
+{% set banner_bis = banner_bis | default({}) | merge({
+    "title"       : "Adresses",
+    "desc"       : "",
+}) %}
+{% block banner_bis  %}{% endblock %}
+
+{% block content %}
+	<div class="container mt-5 mb-5">
+		<div class="row">
+			<div class="col-6">
+				<a href="{{ path('account') }}">
+					<i class="fas fa-arrow-circle-left"></i>
+					Retour</a>
+			</div>
+			<div class="col-6 text-right">
+				<a href="{{ path('account_adress_add') }}" class="btn pink-gradient-btn-into-black">Ajouter une adresse</a>
+
+			</div>
+		</div>
+		<hr>
+
+
+		{% if app.user.adresses|length == 0 %}
+			<div class="text-center">
+				Vous n'avez pas encore d'adresse.</div>
+		{% else %}
+			<div class="row">
+				{% for address in app.user.adresses %}
+					<div class="col-lg-4 mb-3">
+
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">{{address.name}}</h5>
+								<p class="card-text">{{address.adress}}<br><small>{{address.postal}}
+										-
+										{{address.city}}-
+										{{address.country}}</small>
+								</p>
+								<div class="row align-items-center">
+									<div class="col-6">
+										<a href="{{ path('account_adress_edit', {'id' : address.id}) }}" class="btn pink-gradient-btn-into-black">Modifier</a>
+									</div>
+									<div class="col-6 text-right">
+										<a style="font-size:1.5rem;" href="{{ path('account_adress_delete', {'id' : address.id}) }}">
+											<i class="lni-trash"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				{% endfor %}
+			</div>
+		{% endif %}
+
+	</div>
+{% endblock %}
